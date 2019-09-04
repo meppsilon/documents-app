@@ -5,6 +5,7 @@ import { deleteDocument, getDocuments, createDocument } from './service';
 
 const App = () => {
   const [searchInput, setSearchInput] = useState('');
+  const [searchError, setSearchError] = useState('');
   const [documents, setDocuments] = useState([]);
   const [uploadError, setUploadError] = useState('');
   const totalSize = formatBytes(
@@ -22,7 +23,7 @@ const App = () => {
     let checkAll = true;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      if (!checkFilePath(file) || !checkFileSize(file)) {
+      if (!checkFilePath(file.name) || !checkFileSize(file.size)) {
         checkAll = false;
         break;
       }
@@ -41,7 +42,11 @@ const App = () => {
   const onSearchChange = e => {
     const { value } = e.target;
     setSearchInput(value);
-    getDocuments(value).then(response => setDocuments(response.data));
+    if (checkFilePath(value)) {
+      getDocuments(value).then(response => setDocuments(response.data));
+    } else {
+      setSearchError('Input in incorrect format');
+    }
   };
 
   const onDeleteClick = docId => {
@@ -60,6 +65,7 @@ const App = () => {
         </UploadButton>
       </header>
       {uploadError && <div className="my-2 text-red-500">{uploadError}</div>}
+      {searchError && <div classname="my-2 text-red-500">{searchError}</div>}
       <main className="m-4 md:mx-0">
         <div className="flex flex-wrap items-baseline justify-between">
           <h2 className="w-full md:w-auto">{documents.length} Documents</h2>

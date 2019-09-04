@@ -22,26 +22,26 @@ describe('formatBytes(bytes, decimals = 2)', () => {
     });
 });
 
-describe('checkFileSize(file)', () => {
+describe('checkFileSize(filesize)', () => {
     it('returns false if file size > 10 mb', () => {
-        const check = checkFileSize({ size: tenMbs + 10 });
+        const check = checkFileSize(tenMbs + 10);
         expect(check).toBe(false);
     });
 
     it('renders true if file size <= 10 mb', () => {
-        const check = checkFileSize({ size: tenMbs });
+        const check = checkFileSize(tenMbs);
         expect(check).toBe(true);
     });
 });
 
-describe('checkFilePath(file)', () => {
+describe('checkFilePath(filename)', () => {
     it('returns false if file name contains /', () => {
-        const check = checkFilePath({ name: '/hello.js' });
+        const check = checkFilePath('/hello.js');
         expect(check).toBe(false);
     });
 
     it('returns true if file name does not contain /', () => {
-        const check = checkFilePath({ name: 'hello.js' });
+        const check = checkFilePath('hello.js');
         expect(check).toBe(true);
     });
 });

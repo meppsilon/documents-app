@@ -12,6 +12,6 @@ export const formatBytes = (bytes, decimals = 2) => {
   
 export const tenMbs = 10 * 1024 * 1024;
   
-export const checkFileSize = file => file.size <= tenMbs;
+export const checkFileSize = filesize => filesize <= tenMbs;
   
-export const checkFilePath = file => file.name.indexOf('/') === -1;
+export const checkFilePath = filename => filename.indexOf('/') === -1;

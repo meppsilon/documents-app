@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -42,6 +43,7 @@ app.get('/documents', (req, res) => {
   });
   if (req.query.filename) {
     const { filename } = req.query;
+    console.log('filename', filename);
     const filteredFiles = files.filter(
       file => file.name.indexOf(filename) > -1
     );
