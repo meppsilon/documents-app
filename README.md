@@ -30,7 +30,7 @@ On the backend, we addressed a number of security issues as well:
 - body or query validation, especially for file name
 - file type validation
 
-## Improvements
+## Improvement Ideas
 - File thumbnails: The files are all images and can be displayed in a user friendly way. The app would be a lot more intuitive if the user can see a small thumbnail of the file.
 - Upload UI: The upload UI is very basic. We use the generic browser file uploader. The user has no way to view the files or edit the metadata of files before they upload them. Also, the user has no way of dragging and dropping files to be uploaded.
 - Cleaner App file: The App file is starting to carry a lot of logic. Ideally, we would move the logic outside of the `App.js` file to keep the logic limited to display and less around data and state management. I'd look into using redux or mobx and move the state logic and asynchronous API requests out of the `App.js` file and into a separate file / folder structure.
