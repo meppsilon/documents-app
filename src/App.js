@@ -69,6 +69,7 @@ const App = () => {
           {documents.map(doc => (
             <div key={doc.id} className="w-full md:w-1/3">
               <DocumentCard
+                id={doc.id}
                 name={doc.name}
                 size={formatBytes(doc.size)}
                 onDelete={() => onDeleteClick(doc.id)}

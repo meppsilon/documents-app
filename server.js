@@ -5,7 +5,12 @@ const cors = require('cors');
 const helmet = require('helmet');
 const multer = require('multer');
 
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 app.use(helmet());
 
 const storage = multer.diskStorage({
@@ -36,7 +41,6 @@ app.get('/documents', (req, res) => {
     };
   });
   if (req.query.filename) {
-    console.log('query exists');
     const { filename } = req.query;
     const filteredFiles = files.filter(
       file => file.name.indexOf(filename) > -1
