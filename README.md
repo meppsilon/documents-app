@@ -2,14 +2,12 @@
 
 ## Installation
 
-To run everything, install all the necessary modules:
 ```
-npm install
+$ npm install
 ```
-
-Then run the application. _This command runs both the server and client._
+Then start the application (runs both server and client):
 ```
-npm start
+$ npm start
 ```
 
 ## Security
